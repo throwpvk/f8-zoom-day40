@@ -61,14 +61,17 @@
 
       document.getElementById("increase").addEventListener("click", () => {
         store.dispatch({ type: "INCREMENT" });
+        console.log("Current state:", store.getState());
       });
 
       document.getElementById("decrease").addEventListener("click", () => {
         store.dispatch({ type: "DECREMENT" });
+        console.log("Current state:", store.getState());
       });
 
       document.getElementById("reset").addEventListener("click", () => {
         store.dispatch({ type: "RESET" });
+        console.log("Current state:", store.getState());
       });
 
       document
