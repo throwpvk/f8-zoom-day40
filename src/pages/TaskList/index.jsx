@@ -8,6 +8,24 @@ function TaskList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleItemClick = (item) => {
+    navigate(`/tasks/${item.id}/edit`);
+  };
+
+  const handleDeleteTask = async (id) => {
+    if (!confirm("Are you sure to delete this task?")) return;
+
+    const response = await fetch(`http://localhost:3001/tasks/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      dispatch({ type: "REMOVE_TASK", payload: id });
+    } else {
+      console.error("Failed to delete task");
+    }
+  };
+
   useEffect(() => {
     if (tasks.length === 0) {
       fetch("http://localhost:3001/tasks")
@@ -23,7 +41,16 @@ function TaskList() {
       <h1>TaskList Page</h1>
       <ul>
         {tasks.map((item) => (
-          <li key={item.id}>{item.title}</li>
+          <div key={item.id} className={style.taskItem}>
+            <li onClick={() => handleItemClick(item)}>{item.title}</li>
+            <button
+              onClick={() => handleDeleteTask(item.id)}
+              className={style.deleteButton}
+              title="Delete Task"
+            >
+              ✕
+            </button>
+          </div>
         ))}
       </ul>
       <button onClick={() => navigate("/new-task")}>Add new task</button>

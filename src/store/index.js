@@ -3,6 +3,7 @@ import taskReducer from "./reducers/taskReducer";
 
 const store = createStore(taskReducer, {
   tasks: [],
+  editTask: null,
   loading: false,
   error: null,
 });

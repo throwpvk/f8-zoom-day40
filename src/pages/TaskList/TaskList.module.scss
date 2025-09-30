@@ -5,3 +5,30 @@
 .heading {
   width: 800px;
 }
+
+li {
+  cursor: pointer;
+  &:hover {
+    color: blue;
+  }
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.deleteButton {
+  background-color: transparent;
+  color: red;
+  border: none;
+  padding: 4px 8px;
+  font-size: small;
+  cursor: pointer;
+  border-radius: 4px;
+  &:hover {
+    color: darkred;
+  }
+}
