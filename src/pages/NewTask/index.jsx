@@ -15,13 +15,16 @@ function NewTask() {
       id: Date.now() + "",
       title: value,
     };
-    const response = await fetch("http://localhost:3001/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTask),
-    });
+    const response = await fetch(
+      "https://json-server-j1up.onrender.com/redux-tasks",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      }
+    );
 
     const data = await response.json();
 

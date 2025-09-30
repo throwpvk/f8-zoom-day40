@@ -16,7 +16,7 @@ function EditTask() {
   useEffect(() => {
     if (!editTaskID) return;
     if (!editTask) {
-      fetch(`http://localhost:3001/tasks/${editTaskID}`)
+      fetch(`https://json-server-j1up.onrender.com/redux-tasks/${editTaskID}`)
         .then((res) => res.json())
         .then((data) => {
           if (data) {
@@ -35,13 +35,16 @@ function EditTask() {
       ...task,
       title: task.title,
     };
-    const response = await fetch(`http://localhost:3001/tasks/${task.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newTask),
-    });
+    const response = await fetch(
+      `https://json-server-j1up.onrender.com/redux-tasks/${task.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      }
+    );
 
     const data = await response.json();
 

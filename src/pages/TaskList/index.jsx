@@ -15,9 +15,12 @@ function TaskList() {
   const handleDeleteTask = async (id) => {
     if (!confirm("Are you sure to delete this task?")) return;
 
-    const response = await fetch(`http://localhost:3001/tasks/${id}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://json-server-j1up.onrender.com/redux-tasks/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (response.ok) {
       dispatch({ type: "REMOVE_TASK", payload: id });
@@ -28,7 +31,7 @@ function TaskList() {
 
   useEffect(() => {
     if (tasks.length === 0) {
-      fetch("http://localhost:3001/tasks")
+      fetch("https://json-server-j1up.onrender.com/redux-tasks")
         .then((res) => res.json())
         .then((data) => {
           dispatch({ type: "SET_TASKS", payload: data });
