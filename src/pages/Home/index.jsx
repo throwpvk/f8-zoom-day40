@@ -5,7 +5,6 @@ function Home() {
   return (
     <div className={style.home}>
       <h1>Home Page</h1>
-      {/* Dùng Link thay cho a */}
       <Link to="/tasks-list">Task List</Link>
     </div>
   );
